@@ -39,6 +39,7 @@ class CoursePage extends React.Component {
   }
 
   render() {
+    console.log('4) this is an course page, render content ');
     return (<div>
       <div>
         <h1>Courses</h1>
@@ -65,6 +66,8 @@ CoursePage.propType = {
 };
 
 const mapStateToProps = (state, ownProps) => {
+  console.log('3) this is an course page, with state ', state);
+
   return {
     courses: state.courses
   };
