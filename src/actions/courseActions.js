@@ -1,6 +1,22 @@
-export function createCourse(course) {
+import * as types from './actionTypes';
+import courseApi from '../api/mockCourseApi';
+
+const loadCoursesSuccess = (courses) => {
   return {
-    type: 'CREATE_COURSE',
-    course: course
+    type: types.LOAD_COURSES_SUCESS,
+    courses: courses
   };
-}
+};
+
+
+const loadCourses = () => {
+  return (dispatch) => {
+    return courseApi.getAllCourses().then(courses => {
+      dispatch(loadCoursesSuccess(courses));
+    }).catch(error => {
+      throw (error);
+    });
+  };
+};
+
+export { loadCoursesSuccess, loadCourses };
